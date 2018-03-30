@@ -1,6 +1,6 @@
 # Fxnet::Config
 
-Reading (node specific) config from a file and from envs.
+Reading (node specific) config from files and from environment variables into a Hash like structure.
 
 ## Installation
 
