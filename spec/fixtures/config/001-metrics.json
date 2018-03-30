@@ -1,0 +1,6 @@
+{
+"metrics": {
+   "server": "localhost",
+   "protocol": "udp"
+ }
+}
