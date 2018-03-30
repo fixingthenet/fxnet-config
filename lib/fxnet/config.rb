@@ -29,13 +29,7 @@ module Fxnet
         conf[name.to_s]
       end
     end
-    def add(value,*path)
-      config=path[0..-2].inject(@config) do |config, name|
-        @config[name.to_s] ||= {}
-        @config[name.to_s]
-      end
-      config[path[-1].to_s]=value
-    end
+
     private
 
     def load_from_dirs
@@ -55,6 +49,14 @@ module Fxnet
           add(value, *path)
         end
       end
+    end
+
+    def add(value,*path)
+      config=path[0..-2].inject(@config) do |config, name|
+        @config[name.to_s] ||= {}
+        @config[name.to_s]
+      end
+      config[path[-1].to_s]=value
     end
   end
 end

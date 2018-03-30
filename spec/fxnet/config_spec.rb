@@ -15,8 +15,7 @@ RSpec.describe Fxnet::Config do
     expect(config.dig(:master_logging,:level)).to eq("debug")
   end
 
-  it "adds a value" do
-    config.add(344,:something,:new)
-    expect(config.dig(:something,:new)).to eq(344)
+  it "adds a value on create" do
+    expect(config.dig(:add)).to eq(677)
   end
 end

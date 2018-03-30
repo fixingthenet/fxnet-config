@@ -1,8 +1,6 @@
 # Fxnet::Config
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fxnet/config`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Reading (node specific) config from a file and from envs.
 
 ## Installation
 
@@ -22,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'fxnet/config'
+
+config=Fxnet::Config.new(
+ dirs: ['/node/configs'],
+ prefix: 'GOOD__',
+ add: { 'GOOD__MYSTUFF__HERE' => 'debug' }
+)
+
+config.dig(:mystuff,:here) == 'debug'
+=> true
+```
+
+ 1. It will read all json config files from all directories (the directories are
+read in given order, the files in sorted order) and marged into a hash.
+ 1. It will add all environment variables to the hash that begin with the
+prefix ('FXNET' is default). The variables are split at '__' and form a set
+of keys in the config hash
+ 1. You can access all the parts of the config tree by #dig
+
+That's it.
+
 
 ## Development
 
